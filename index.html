@@ -131,20 +131,22 @@
 <!-- Flex container for main + sidebar -->
 <div class="content-container">
 
-  <main>
-    <!-- Scrollable text section fills main -->
-    <div class="scroll-box" id="content-box">
-      <p>Welcome! Select a topic from the sidebar.</p>
-    </div>
-  </main>
-
+  <!-- Sidebar FIRST -->
   <div class="sidebar">
     <button onclick="updateContent('about')">About</button>
     <button onclick="updateContent('services')">Services</button>
     <button onclick="updateContent('contact')">Contact</button>
   </div>
 
+  <!-- Main area SECOND -->
+  <main>
+    <div class="scroll-box" id="content-box">
+      <p>Welcome! Select a topic from the sidebar.</p>
+    </div>
+  </main>
+
 </div>
+
 
 <!-- Footer -->
 <div class="footer">
