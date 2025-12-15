@@ -15,6 +15,9 @@
     .btn:hover { text-decoration: underline; }
 
     .actions { text-align: center; margin-bottom: 40px; }
+    
+    /* Scroll container */
+    .scroll-box {height: 300px; overflow: auto; padding: 20px; background-color: #f5f5f5; border-radius: 8px;border: 1px solid #ccc;}
 
     /* Modal styles */
     .modal {
@@ -55,6 +58,15 @@
   <div class="actions">
     <button class="btn" onclick="openModal('aboutModal')">About</button>
     <button class="btn" onclick="openModal('servicesModal')">Services</button>
+  </div>
+  <!-- Scrollable text section -->
+  <div class="scroll-box">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fermentum, sapien at tempus fermentum, lorem lorem tincidunt magna, sit amet sagittis ex nulla ut magna. Repeat as needed to overflow and test scrolling.</p>
+    <p>More content...</p>
+    <p>More content...</p>
+    <p>More content...</p>
+    <p>More content...</p>
+    <p>More content...</p>
   </div>
   
   <p>Placeholder(!!!).</p>
