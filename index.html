@@ -213,15 +213,14 @@
 </div>
   
   <!-- script for hamburger button-->
-<script>
-  function toggleMenu() {
-    const menu = document.getElementById('menuBar');
-    menu.classList.toggle('open');
-  }
-</script>
 
 <script>
   const contentBox = document.getElementById('content-box');
+
+  function toggleMenu() {
+    const menu = document.getElementById('menuBar');
+    menu.classList.toggle('open'); // opens or closes menu
+    }
 
   function updateContent(section) {
     switch (section) {
