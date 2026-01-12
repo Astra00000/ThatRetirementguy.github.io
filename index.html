@@ -182,11 +182,10 @@
     ☰
   </div>
   <div class="menu-bar" id="menuBar">
-  <button onclick="window.open('holder.html', '_blank')">About</button>
-  <button onclick="window.open('holder2.html', '_blank')">Services</button>
-  <button onclick="window.open('holder3.html', '_blank')">Contact</button>
+  <button onclick="loadContent('holder.html'); toggleMenu()">About</button>
+  <button onclick="loadContent('holder2.html'); toggleMenu()">Services</button>
+  <button onclick="loadContent('holder3.html'); toggleMenu()">Contact</button>
 </div>
-
 </header>
   
 
@@ -228,6 +227,21 @@
     const menu = document.getElementById('menuBar');
     menu.classList.toggle('open'); // opens or closes menu
     }
+  function loadContent(file) {
+    fetch(file)
+      .then(response => response.text())
+      .then(html => {
+        const contentBox = document.getElementById('content-box');
+        contentBox.innerHTML = html;
+      });
+  }
+
+// Back to main page
+  function loadMain() {
+    const contentBox = document.getElementById('content-box');
+    contentBox.innerHTML = `<p>Welcome! Select a topic from the sidebar.</p>`;
+  }
+
 
   function updateContent(section) {
     switch (section) {
