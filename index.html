@@ -20,6 +20,7 @@
     }
 
     header {
+      position: relative;
       font-size: 12px;
       padding:5px;
       text-align:center;
@@ -126,13 +127,69 @@
       cursor: pointer;
     }
     .close:hover { color: black; }
+
+    
+/* Hamburger icon */
+.hamburger {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Dropdown bar */
+.menu-bar {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #222;
+  display: none;
+  flex-direction: column;
+  z-index: 50;
+}
+
+.menu-bar button {
+  background: none;
+  border: none;
+  color: #fff;
+  padding: 15px;
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.menu-bar button:hover {
+  background: #333;
+}
+
+/* Mobile only */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none;
+  }
+}
+
   </style>
 </head>
 <body>
 
 <header>
   <h1>That Retirement Guy</h1>
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
 </header>
+  <div class="menu-bar" id="menuBar">
+  <button onclick="updateContent('about'); toggleMenu()">About</button>
+  <button onclick="updateContent('services'); toggleMenu()">Services</button>
+  <button onclick="updateContent('contact'); toggleMenu()">Contact</button>
+</div>
+
+
 
 <!-- Flex container for main + sidebar -->
 <div class="content-container">
@@ -160,6 +217,14 @@
   <p>Contact: Thatretirementguy@gmail.com</p>
   <p>TikTok: @thatretirementguy</p>
 </div>
+  
+  <!-- script for hamburger button-->
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('menuBar');
+    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+  }
+</script>
 
 <script>
   const contentBox = document.getElementById('content-box');
