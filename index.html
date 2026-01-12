@@ -142,10 +142,16 @@
 
 /* Dropdown bar */
 .menu-bar {
-  max-height: 0;
+  position: absolute;      /* position relative to header */
+  top: 100%;               /* just below header */
+  left: 0;
+  width: 100%;
+  background-color: #222;  /* dark background */
+  max-height: 0;           /* hidden initially */
   overflow: hidden;
   transition: max-height 0.3s ease;
   flex-direction: column;
+  z-index: 50;
 }
 
   .menu-bar.open {
