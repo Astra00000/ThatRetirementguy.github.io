@@ -141,15 +141,15 @@
 }
 
 /* Dropdown bar */
-.menu-bar {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background: #222;
-  display: none;
+..menu-bar {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
   flex-direction: column;
-  z-index: 50;
+}
+
+  .menu-bar.open {
+  max-height: 500px; /* large enough to show all buttons */
 }
 
 .menu-bar button {
@@ -175,12 +175,13 @@
   <div class="hamburger" onclick="toggleMenu()">
     ☰
   </div>
-</header>
   <div class="menu-bar" id="menuBar">
   <button onclick="updateContent('about'); toggleMenu()">About</button>
   <button onclick="updateContent('services'); toggleMenu()">Services</button>
   <button onclick="updateContent('contact'); toggleMenu()">Contact</button>
 </div>
+</header>
+  
 
 
 
@@ -215,7 +216,7 @@
 <script>
   function toggleMenu() {
     const menu = document.getElementById('menuBar');
-    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    menu.classList.toggle('open');
   }
 </script>
 
