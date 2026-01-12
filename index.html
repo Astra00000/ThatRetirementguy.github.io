@@ -187,13 +187,9 @@
   <button onclick="loadContent('holder3.html'); toggleMenu()">Contact</button>
 </div>
 </header>
-  
-
-
-
+  <div id="page-content">
+    <div class="content-container">
 <!-- Flex container for main + sidebar -->
-<div class="content-container">
-
   <!-- Sidebar FIRST -->
   <div class="sidebar">
     <button onclick="updateContent('about')">About</button>
@@ -212,12 +208,15 @@
 
 
 <!-- Footer -->
-<div class="footer">
-  <p>© 2025 TRG.com</p>
-  <p>Contact: Thatretirementguy@gmail.com</p>
-  <p>TikTok: @thatretirementguy</p>
+  <div class="footer">
+    <p>© 2025 TRG.com</p>
+    <p>Contact: Thatretirementguy@gmail.com</p>
+    <p>TikTok: @thatretirementguy</p>
+  </div>
 </div>
+
   
+
   <!-- script for hamburger button-->
 
 <script>
@@ -228,13 +227,13 @@
     menu.classList.toggle('open'); // opens or closes menu
     }
   function loadContent(file) {
-    fetch(file)
-      .then(response => response.text())
-      .then(html => {
-        const contentBox = document.getElementById('content-box');
-        contentBox.innerHTML = html;
-      });
-  }
+  fetch(file)
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("page-content").innerHTML = html;
+    });
+}
+
 
 // Back to main page
   function loadMain() {
