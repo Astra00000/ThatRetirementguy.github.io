@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <title>ThatRetirementGuy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
-    * {  box-sizing: border-box;  }
-    
+    * { box-sizing: border-box; }
+
     body {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #fff;
       background-color: #111111;
       color: #333;
       overflow-x: hidden;
@@ -22,17 +22,16 @@
     header {
       position: relative;
       font-size: 12px;
-      padding:5px;
-      text-align:center;
+      padding: 10px;
+      text-align: center;
       background-color: #424040;
-      color: #FFFFFF;
+      color: #ffffff;
     }
 
-    /* Flex container for main + sidebar */
     .content-container {
       display: flex;
-      flex: 1; /* fills remaining vertical space */
-      gap: 20px; /* spacing between main and sidebar */
+      flex: 1;
+      gap: 20px;
       padding: 40px;
       max-width: 100%;
     }
@@ -44,7 +43,7 @@
     }
 
     .scroll-box {
-      flex: 1; /* fills main vertically */
+      flex: 1;
       overflow: auto;
       padding: 20px;
       background-color: #f5f5f5;
@@ -56,7 +55,7 @@
       width: 200px;
       flex-shrink: 0;
       background-color: #222222;
-      color: #fff;
+      color: #ffffff;
       padding: 20px;
       display: flex;
       flex-direction: column;
@@ -79,189 +78,118 @@
 
     .footer {
       width: 100%;
-      background: #000;
-      color: #fff;
+      background: #000000;
+      color: #ffffff;
       font-size: 10px;
       padding: 10px;
       text-align: center;
     }
 
-    /* Buttons inside main (optional) */
-    .btn {  
+    .hamburger {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 22px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .menu-bar {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #222222;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      z-index: 50;
+    }
+
+    .menu-bar.open {
+      max-height: 300px;
+    }
+
+    .menu-bar button {
       background: none;
       border: none;
-      color: #007BFF;
+      color: #ffffff;
+      padding: 15px;
+      text-align: left;
       font-size: 16px;
       cursor: pointer;
-      padding: 0;
-    }
-    .btn:hover { text-decoration: underline; }
-
-    .actions { text-align: center; margin-bottom: 40px; }
-
-    /* Modal styles (unchanged) */
-    .modal {
-      display: none; 
-      position: fixed; 
-      z-index: 100; 
-      left: 0; top: 0; width: 100%; height: 100%; 
-      overflow: auto; 
-      background-color: rgba(0,0,0,0.5);
     }
 
-    .modal-content {
-      background-color: #fefefe;
-      margin: 15% auto; 
-      padding: 20px;
-      border-radius: 8px;
-      width: 80%;
-      max-width: 500px;
-      text-align: center;
+    .menu-bar button:hover {
+      background: #333333;
     }
 
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
+    @media (max-width: 768px) {
+      .content-container {
+        flex-direction: column;
+        padding: 15px;
+      }
+
+      .sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+      }
     }
-    .close:hover { color: black; }
-
-    
-/* Hamburger icon */
-.hamburger {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 22px;
-  cursor: pointer;
-  user-select: none;
-}
-
-/* Dropdown bar */
-.menu-bar {
-  position: absolute;      /* position relative to header */
-  top: 100%;               /* just below header */
-  left: 0;
-  width: 100%;
-  background-color: #222;  /* dark background */
-  max-height: 0;           /* hidden initially */
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-  flex-direction: column;
-  z-index: 50;
-}
-
-  .menu-bar.open {
-  max-height: 500px; /* large enough to show all buttons */
-}
-
-.menu-bar button {
-  background: none;
-  border: none;
-  color: #fff;
-  padding: 15px;
-  text-align: left;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.menu-bar button:hover {
-  background: #333;
-}
-
   </style>
 </head>
+
 <body>
 
 <header>
   <h1>That Retirement Guy</h1>
-  <div class="hamburger" onclick="toggleMenu()">
-    ☰
-  </div>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
   <div class="menu-bar" id="menuBar">
-  <button onclick="loadContent('holder.html'); toggleMenu()">About</button>
-  <button onclick="loadContent('holder2.html'); toggleMenu()">Services</button>
-  <button onclick="loadContent('holder3.html'); toggleMenu()">Contact</button>
-</div>
+    <button onclick="updateContent('about'); toggleMenu()">About</button>
+    <button onclick="updateContent('services'); toggleMenu()">Services</button>
+    <button onclick="updateContent('contact'); toggleMenu()">Contact</button>
+  </div>
 </header>
-  <div id="page-content">
-    <div class="content-container">
-<!-- Flex container for main + sidebar -->
-  <!-- Sidebar FIRST -->
+
+<div class="content-container">
   <div class="sidebar">
     <button onclick="updateContent('about')">About</button>
     <button onclick="updateContent('services')">Services</button>
     <button onclick="updateContent('contact')">Contact</button>
   </div>
 
-  <!-- Main area SECOND -->
   <main>
     <div class="scroll-box" id="content-box">
       <p>Welcome! Select a topic from the sidebar.</p>
     </div>
   </main>
-
 </div>
 
-
-<!-- Footer -->
-  <div class="footer">
-    <p>© 2025 TRG.com</p>
-    <p>Contact: Thatretirementguy@gmail.com</p>
-    <p>TikTok: @thatretirementguy</p>
-  </div>
+<div class="footer">
+  <p>© 2025 TRG.com</p>
+  <p>Contact: Thatretirementguy@gmail.com</p>
+  <p>TikTok: @thatretirementguy</p>
 </div>
-
-  
-
-  <!-- script for hamburger button-->
 
 <script>
-  const contentBox = document.getElementById('content-box');
+  const contentBox = document.getElementById("content-box");
 
   function toggleMenu() {
-    const menu = document.getElementById('menuBar');
-    menu.classList.toggle('open'); // opens or closes menu
-    }
-  function loadContent(file) {
-  fetch(file)
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("page-content").innerHTML = html;
-    });
-}
-
-
-// Back to main page
-  function loadMain() {
-    const contentBox = document.getElementById('content-box');
-    contentBox.innerHTML = `<p>Welcome! Select a topic from the sidebar.</p>`;
+    document.getElementById("menuBar").classList.toggle("open");
   }
 
-
   function updateContent(section) {
-    switch (section) {
-      case 'about':
-        contentBox.innerHTML = `<h2>About</h2>
-        <p>This is the About section. Add your text and images here.</p>`;
-        break;
-
-      case 'services':
-        contentBox.innerHTML = `<h2>Services</h2>
-        <p>Here are the services offered. Describe them here.</p>`;
-        break;
-
-      case 'contact':
-        contentBox.innerHTML = `<h2>Contact</h2>
-        <p>Email: AidanCurtis@gmail.com</p>
-        <p>Phone: (optional)</p>`;
-        break;
-
-      default:
-        contentBox.innerHTML = `<p>Welcome! Select a topic from the sidebar.</p>`;
+    if (section === "about") {
+      contentBox.innerHTML = "<h2>About</h2><p>This is the About section. Add your text and images here.</p>";
+    } else if (section === "services") {
+      contentBox.innerHTML = "<h2>Services</h2><p>Here are the services offered. Describe them here.</p>";
+    } else if (section === "contact") {
+      contentBox.innerHTML = "<h2>Contact</h2><p>Email: AidanCurtis@gmail.com</p><p>Phone: (optional)</p>";
+    } else {
+      contentBox.innerHTML = "<p>Welcome! Select a topic from the sidebar.</p>";
     }
   }
 </script>
