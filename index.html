@@ -179,9 +179,11 @@
 <script>
   const contentBox = document.getElementById("content-box");
 
-  function toggleMenu() {
-    document.getElementById("menuBar").classList.toggle("open");
-  }
+ function toggleMenu() {
+  const menu = document.getElementById("menuBar");
+  menu.classList.toggle("open");
+}
+
 
   function updateContent(section) {
     if (section === "about") {
