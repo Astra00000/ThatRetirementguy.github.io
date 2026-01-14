@@ -21,11 +21,18 @@
 
     header {
       position: relative;
+      justify-content: space-between;
       font-size: 12px;
       padding: 10px;
       text-align: center;
       background-color: #424040;
       color: #ffffff;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 15px; /* space between logo and title */
     }
     
     header .logo {
@@ -153,8 +160,10 @@
 <body>
 
 <header>
-  <img src="logo.jpg" alt="Logo" class="logo">
-  <h1>That Retirement Guy</h1>
+  <div class="header-left">
+    <img src="logo.jpg" alt="Logo" class="logo">
+    <h1>That Retirement Guy</h1>
+  </div>
   <div class="hamburger" onclick="toggleMenu()">☰</div>
   <div class="menu-bar" id="menuBar">
     <button onclick="updateContent('about'); toggleMenu()">About</button>
