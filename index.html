@@ -205,7 +205,12 @@
     if (section === "about") {
       contentBox.innerHTML = "<h2>About</h2><p>This is the About section. Add your text and images here.</p>";
     } else if (section === "services") {
-      contentBox.innerHTML = "<h2>Services</h2><p>Here are the services offered. Describe them here.</p>";
+    let servicesHtml = "";
+     servicesHtml += "<h2>Services</h2><p>Term life is the most cost efficient life policy,</p>";
+    servicesHtml += "<p>but that does not automatically make it the best choice.</p>";
+    servicesHtml += "<p>Tern life is a relatively cheap option for someone who is primarilly</p>";
+    servicesHtml += "<p>focused on death benfit. Though other benefits may be added on through riders. </p>";
+    contentBox.innerHTML = servicesHtml;
     } else if (section === "contact") {
       contentBox.innerHTML = "<h2>Contact</h2><p>Email: AidanCurtis@gmail.com</p><p>Phone: (optional)</p>";
     } else {
